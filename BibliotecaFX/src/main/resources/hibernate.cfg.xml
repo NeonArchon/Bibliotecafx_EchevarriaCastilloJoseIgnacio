@@ -23,9 +23,9 @@
         <property name="hibernate.hbm2ddl.auto">update</property>
 
         <!-- Especificar las clases anotadas (entidades) -->
-        <mapping class="bibliotecafx.entities.model.Libro"/>
-        <mapping class="bibliotecafx.entities.model.Autor"/>
-        <mapping class="bibliotecafx.entities.model.Socio"/>
-        <mapping class="bibliotecafx.entities.model.Prestamo"/>
+        <mapping class="org.example.entities.autor"/>
+        <mapping class="org.example.entities.libro"/>
+        <mapping class="org.example.entities.socio"/>
+        <mapping class="org.example.entities.prestamo"/>
     </session-factory>
 </hibernate-configuration>
