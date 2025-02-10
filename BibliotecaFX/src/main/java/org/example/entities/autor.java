@@ -28,8 +28,6 @@ public class autor implements Serializable {
     }
 
     //constrcuttor relleno
-
-
     public autor(Long idAutor, String nombre, String nacionalidad, List<libro> libros) {
         this.idAutor = idAutor;
         this.nombre = nombre;
