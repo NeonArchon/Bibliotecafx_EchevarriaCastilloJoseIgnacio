@@ -1,14 +1,14 @@
 package org.example.DAO;
 
 import org.example.entities.autor;
-import org.hibernate.mapping.List;
+import java.util.List;
 
 public interface ItfAutor {
 
-    void añadirAutor(autor autor);
+    void anyadirAutor(autor autor);
     void modificarAutor(autor autor);
-    boolean eliminarAutor(Long idAutor);
-    List<autor> buscarAutoresPorNombre(String nombre);
-    List<autor> listarTodosLosAutores();
+    void eliminarAutor(String idAutor);
+    List<autor> autoresPorNombre(String nombre);
+    List<autor> listarAutores();
 
 }

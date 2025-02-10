@@ -1,8 +1,6 @@
 package org.example.entities;
 
 import jakarta.persistence.*;
-import jakarta.persistence.Id;
-
 import java.io.Serializable;
 import java.util.List;
 
@@ -12,7 +10,7 @@ public class autor implements Serializable {
     //atributos
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idAutor;
+    private String idAutor;
 
     @Column(nullable = false)
     private String nombre;
@@ -28,7 +26,7 @@ public class autor implements Serializable {
     }
 
     //constrcuttor relleno
-    public autor(Long idAutor, String nombre, String nacionalidad, List<libro> libros) {
+    public autor(String idAutor, String nombre, String nacionalidad, List<libro> libros) {
         this.idAutor = idAutor;
         this.nombre = nombre;
         this.nacionalidad = nacionalidad;
@@ -37,7 +35,7 @@ public class autor implements Serializable {
 
     //getters y setters
 
-    public Long getId() {
+    public String getId() {
         return idAutor;
     }
 

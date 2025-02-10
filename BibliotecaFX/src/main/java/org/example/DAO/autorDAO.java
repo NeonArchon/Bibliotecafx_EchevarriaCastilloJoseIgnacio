@@ -1,5 +1,6 @@
 package org.example.DAO;
 
+import org.example.bibliotecafx.HibernateUtil;
 import org.example.entities.autor;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -10,7 +11,7 @@ import java.util.List;
 public class autorDAO implements ItfAutor{
 
     // Método para añadir un nuevo autor
-    public void añadirAutor(autor autor) {
+    public void anyadirAutor(autor autor) {
         Transaction transaction = null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
@@ -23,6 +24,8 @@ public class autorDAO implements ItfAutor{
             e.printStackTrace();
         }
     }
+
+
 
     // Método para modificar un autor existente
     public void modificarAutor(autor autor) {
@@ -40,7 +43,7 @@ public class autorDAO implements ItfAutor{
     }
 
     // Método para eliminar un autor
-    public void eliminarAutor(Long idAutor) {
+    public void eliminarAutor(String idAutor) {
         Transaction transaction = null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
@@ -55,6 +58,16 @@ public class autorDAO implements ItfAutor{
             }
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public List<autor> autoresPorNombre(String nombre) {
+        return null;
+    }
+
+    @Override
+    public List<autor> listarAutores() {
+        return null;
     }
 
     // Método para buscar autores por nombre
