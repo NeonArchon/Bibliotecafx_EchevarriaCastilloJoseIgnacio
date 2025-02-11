@@ -10,7 +10,7 @@ public class autor implements Serializable {
     //atributos
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String idAutor;
+    private int idAutor;
 
     @Column(nullable = false)
     private String nombre;
@@ -26,7 +26,7 @@ public class autor implements Serializable {
     }
 
     //constrcuttor relleno
-    public autor(String idAutor, String nombre, String nacionalidad, List<libro> libros) {
+    public autor(int idAutor, String nombre, String nacionalidad, List<libro> libros) {
         this.idAutor = idAutor;
         this.nombre = nombre;
         this.nacionalidad = nacionalidad;
@@ -35,7 +35,7 @@ public class autor implements Serializable {
 
     //getters y setters
 
-    public String getId() {
+    public int getId() {
         return idAutor;
     }
 

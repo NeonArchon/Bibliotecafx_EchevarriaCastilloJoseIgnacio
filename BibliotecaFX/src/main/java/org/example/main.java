@@ -14,8 +14,6 @@ public class main {
         /*        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
         Session session = sessionFactory.openSession(); +*/
 
-
-
         libroDAO libroDAO = new libroDAO();
         socioDAO socioDAO = new socioDAO();
         prestamoDAO prestamoDAO = new prestamoDAO();

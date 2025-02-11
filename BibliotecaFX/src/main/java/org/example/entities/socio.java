@@ -20,7 +20,7 @@ public class socio implements Serializable {
     private String direccion;
 
     @Column
-    private String telefono;
+    private int telefono;
 
     @OneToMany(mappedBy = "socio", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<prestamo> prestamos;
@@ -31,7 +31,7 @@ public class socio implements Serializable {
 
     //constructor relleno
 
-    public socio(Long idSocio, String nombre, String direccion, String telefono, List<prestamo> prestamos) {
+    public socio(Long idSocio, String nombre, String direccion, int telefono, List<prestamo> prestamos) {
         this.idSocio = idSocio;
         this.nombre = nombre;
         this.direccion = direccion;
@@ -64,11 +64,11 @@ public class socio implements Serializable {
         this.direccion = direccion;
     }
 
-    public String getTelefono() {
+    public int getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(String telefono) {
+    public void setTelefono(int telefono) {
         this.telefono = telefono;
     }
 
