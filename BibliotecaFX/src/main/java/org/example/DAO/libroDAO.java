@@ -1,80 +1,107 @@
 package org.example.DAO;
 
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.Persistence;
+import org.example.bibliotecafx.HibernateUtil;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.example.entities.libro;
-
+import org.hibernate.query.Query;
 import java.util.List;
 
+
 public class libroDAO implements ItfLibro{
-    private EntityManagerFactory emf = Persistence.createEntityManagerFactory("miUnidadDePersistencia");
+
     @Override
     public void anyaadirLibro(libro libro) {
-        EntityManager em = emf.createEntityManager();
-        em.getTransaction().begin();
-        em.persist(libro);
-        em.getTransaction().commit();
-        em.close();
+        Transaction transaction = null;
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            transaction = session.beginTransaction();
+            session.save(libro);
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
     }
 
     @Override
     public void modificarLibro(libro libro) {
-        EntityManager em = emf.createEntityManager();
-        em.getTransaction().begin();
-        em.merge(libro);
-        em.getTransaction().commit();
-        em.close();
+        Transaction transaction = null;
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            transaction = session.beginTransaction();
+            session.update(libro);
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
     }
 
     @Override
     public void eliminarLibro(Long idLibro) {
-        EntityManager em = emf.createEntityManager();
-        em.getTransaction().begin();
-        libro libro = em.find(libro.class, idLibro);
-        if (libro != null) {
-            em.remove(libro);
+        Transaction transaction = null;
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            transaction = session.beginTransaction();
+            libro libro = session.get(libro.class, idLibro);
+            if (libro != null) {
+                session.delete(libro);
+            }
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
         }
-        em.getTransaction().commit();
-        em.close();
     }
 
     @Override
     public libro libroPorTitulo(String titulo) {
-        EntityManager em = emf.createEntityManager();
-        libro libro = em.createQuery("SELECT l FROM Libro l WHERE l.titulo = :titulo", libro.class)
-                .setParameter("titulo", titulo)
-                .getSingleResult();
-        em.close();
-        return libro;
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            Query<libro> query = session.createQuery("FROM libro WHERE titulo = :titulo", libro.class);
+            query.setParameter("titulo", titulo);
+            return query.uniqueResult();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
     @Override
     public libro libroPorAutor(String autor) {
-        EntityManager em = emf.createEntityManager();
-        libro libro = em.createQuery("SELECT l FROM Libro l WHERE l.autor.nombre = :autor", libro.class)
-                .setParameter("autor", autor)
-                .getSingleResult();
-        em.close();
-        return libro;
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            Query<libro> query = session.createQuery("FROM libro WHERE autor.nombre = :autor", libro.class);
+            query.setParameter("autor", autor);
+            return query.uniqueResult();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
     @Override
     public libro libroPorISBN(String isbn) {
-        EntityManager em = emf.createEntityManager();
-        libro libro = em.createQuery("SELECT l FROM Libro l WHERE l.isbn = :isbn", libro.class)
-                .setParameter("isbn", isbn)
-                .getSingleResult();
-        em.close();
-        return libro;
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            Query<libro> query = session.createQuery("FROM libro WHERE isbn = :isbn", libro.class);
+            query.setParameter("isbn", isbn);
+            return query.uniqueResult();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
     @Override
     public List<libro> librosDisponibles() {
-        EntityManager em = emf.createEntityManager();
-        List<libro> libros = em.createQuery("SELECT l FROM Libro l WHERE l.prestado = false", libro.class)
-                .getResultList();
-        em.close();
-        return libros;
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            Query<libro> query = session.createQuery("FROM libro WHERE prestado = false", libro.class);
+            return query.list();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 }
