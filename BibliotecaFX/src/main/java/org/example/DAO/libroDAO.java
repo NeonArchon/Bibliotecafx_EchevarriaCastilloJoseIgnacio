@@ -13,22 +13,30 @@ public class libroDAO implements ItfLibro{
     @Override
     public void anyaadirLibro(libro libro) {
         Transaction transaction = null;
-        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-            transaction = session.beginTransaction();
-            session.save(libro);
-            transaction.commit();
+        Session session = null;
+        try {
+            session = HibernateUtil.getSessionFactory().openSession(); // Abre la sesión
+            transaction = session.beginTransaction(); // Inicia la transacción
+            session.save(libro); // Guarda el libro
+            transaction.commit(); // Confirma la transacción
         } catch (Exception e) {
             if (transaction != null) {
-                transaction.rollback();
+                transaction.rollback(); // Si hay un error, deshace la transacción
             }
             e.printStackTrace();
+        } finally {
+            if (session != null) {
+                session.close(); // Cierra la sesión
+            }
         }
     }
 
     @Override
     public void modificarLibro(libro libro) {
         Transaction transaction = null;
-        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+        Session session = null;
+        try {
+            session = HibernateUtil.getSessionFactory().openSession();
             transaction = session.beginTransaction();
             session.update(libro);
             transaction.commit();
@@ -37,13 +45,19 @@ public class libroDAO implements ItfLibro{
                 transaction.rollback();
             }
             e.printStackTrace();
+        } finally {
+            if (session != null) {
+                session.close();
+            }
         }
     }
 
     @Override
     public void eliminarLibro(Long idLibro) {
         Transaction transaction = null;
-        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+        Session session = null;
+        try {
+            session = HibernateUtil.getSessionFactory().openSession();
             transaction = session.beginTransaction();
             libro libro = session.get(libro.class, idLibro);
             if (libro != null) {
@@ -55,18 +69,28 @@ public class libroDAO implements ItfLibro{
                 transaction.rollback();
             }
             e.printStackTrace();
+        } finally {
+            if (session != null) {
+                session.close();
+            }
         }
     }
 
     @Override
     public libro libroPorTitulo(String titulo) {
-        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+        Session session = null;
+        try {
+            session = HibernateUtil.getSessionFactory().openSession();
             Query<libro> query = session.createQuery("FROM libro WHERE titulo = :titulo", libro.class);
             query.setParameter("titulo", titulo);
             return query.uniqueResult();
         } catch (Exception e) {
             e.printStackTrace();
             return null;
+        } finally {
+            if (session != null) {
+                session.close();
+            }
         }
     }
 
