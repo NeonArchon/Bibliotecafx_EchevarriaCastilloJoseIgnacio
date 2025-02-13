@@ -1,16 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.VBox?>
-
 <?import javafx.scene.control.Button?>
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="org.example.bibliotecafx.HelloController">
-  <padding>
-    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
-  </padding>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-  <Label fx:id="welcomeText"/>
-  <Button text="Hello!" onAction="#onHelloButtonClick"/>
-</VBox>
+<?import java.net.URL?>
+<AnchorPane prefHeight="354.0"  prefWidth="445.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+
+   <stylesheets> <URL value="@Style.css"/> </stylesheets>
+
+   <children>
+      <Button layoutX="261.0" layoutY="269.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="134.0" text="Salir" />
+      <Button layoutX="328.0" layoutY="218.0" mnemonicParsing="false" text="Gestion de Libros" />
+      <Button layoutX="14.0" layoutY="218.0" mnemonicParsing="false" text="Gestion de Autores" />
+      <Button layoutX="90.0" layoutY="270.0" mnemonicParsing="false" text="Gestion Prestamos" />
+      <Button layoutX="171.0" layoutY="218.0" mnemonicParsing="false" text="Gestion de Socios" />
+      <Label alignment="CENTER" layoutX="13.0" layoutY="28.0" prefHeight="118.0" prefWidth="425.0" text="Bienvenido al gestor de Libreria &quot;Mi Librito&quot;&#10;&#10;Elija un gestor para iniciar&#10;&#10;O presione salir para cerrar&#10;" textAlignment="CENTER">
+         <font>
+            <Font name="Impact" size="18.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

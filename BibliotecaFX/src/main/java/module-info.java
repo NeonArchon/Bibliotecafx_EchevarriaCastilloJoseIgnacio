@@ -12,11 +12,10 @@ module org.example.bibliotecafx {
     requires jakarta.persistence;
     requires org.hibernate.orm.core;
 
-
     opens org.example.bibliotecafx.interfaz to javafx.fxml;
     exports org.example.bibliotecafx.interfaz;
-    opens imagenes;
 
     //Abre los modulos de hibbernate
     opens org.example.bibliotecafx.entidades to org.hibernate.orm.core, javafx.fxml, javafx.base;
+
 }

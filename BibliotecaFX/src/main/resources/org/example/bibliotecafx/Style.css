@@ -1,0 +1,17 @@
+.button {
+    -fx-background-color: #3c9ede;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-padding: 10px 20px;
+}
+
+.button:hover {
+    -fx-background-color: #2980b9;
+}
+
+/* Estilo para el Label */
+.label {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2c3e50;
+}

@@ -1,4 +1,4 @@
-package org.example.bibliotecafx;
+package org.example.bibliotecafx.interfaz;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
