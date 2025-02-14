@@ -1,6 +1,9 @@
 module org.example.bibliotecafx {
     requires javafx.controls;
     requires javafx.fxml;
+    exports org.example.bibliotecafx.util;
+    exports org.example.bibliotecafx.interfaz;
+    exports org.example.entities;
 
     requires org.controlsfx.controls;
     requires com.dlsc.formsfx;
@@ -13,9 +16,8 @@ module org.example.bibliotecafx {
     requires org.hibernate.orm.core;
 
     opens org.example.bibliotecafx.interfaz to javafx.fxml;
-    exports org.example.bibliotecafx.interfaz;
 
     //Abre los modulos de hibbernate
-    opens org.example.bibliotecafx.entidades to org.hibernate.orm.core, javafx.fxml, javafx.base;
+    opens org.example.entities to org.hibernate.orm.core, javafx.fxml, javafx.base;
 
 }

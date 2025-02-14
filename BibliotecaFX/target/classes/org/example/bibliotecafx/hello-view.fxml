@@ -1,16 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.VBox?>
+<?import java.net.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<?import javafx.scene.control.Button?>
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="org.example.bibliotecafx.HelloController">
-  <padding>
-    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
-  </padding>
+<AnchorPane prefHeight="354.0" prefWidth="498.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.bibliotecafx.interfaz.HelloApplication">
 
-  <Label fx:id="welcomeText"/>
-  <Button text="Hello!" onAction="#onHelloButtonClick"/>
-</VBox>
+   <stylesheets> <URL value="@Style.css" /> </stylesheets>
+
+   <children>
+      <Button fx:id="botonSalir" layoutX="261.0" layoutY="271.0" mnemonicParsing="false" onAction="#accionBotonSalir" prefHeight="26.0" prefWidth="134.0" text="Salir" />
+
+      <Button fx:id="botonGestionLibros" layoutX="335.0" layoutY="218.0" mnemonicParsing="false" onAction="#accionBotonGestionlibros" text="Gestion de Libros" />
+
+      <Button fx:id="botonGestionAutores" layoutX="2.0" layoutY="218.0" mnemonicParsing="false" onAction="#accionBotonGestionAutores" text="Gestion de Autores" />
+
+      <Button fx:id="botonGestionPrestamos" layoutX="90.0" layoutY="270.0" mnemonicParsing="false" onAction="#accionBotonGestionPrestamos" text="Gestion Prestamos" />
+
+      <Button fx:id="botonGestionSocios" layoutX="171.0" layoutY="218.0" mnemonicParsing="false" onAction="#accionBotonGestionSocios" text="Gestion de Socios" />
+
+      <Label alignment="CENTER" layoutX="13.0" layoutY="28.0" prefHeight="154.0" prefWidth="465.0" text="Bienvenido al gestor de Libreria &quot;Mi Librito&quot;&#10;&#10;Elija un gestor para iniciar&#10;&#10;O presione salir para cerrar&#10;" textAlignment="CENTER">
+
+         <font>
+            <Font name="Impact" size="22.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
