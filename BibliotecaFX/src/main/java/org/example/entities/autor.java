@@ -63,6 +63,14 @@ public class autor implements Serializable {
         return libros;
     }
 
+    public int getIdAutor() {
+        return idAutor;
+    }
+
+    public void setIdAutor(int idAutor) {
+        this.idAutor = idAutor;
+    }
+
     public void setLibros(List<libro> libros) {
         this.libros = libros;
     }

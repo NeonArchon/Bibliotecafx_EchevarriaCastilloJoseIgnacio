@@ -6,20 +6,24 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 
+<?import javafx.scene.control.TextField?>
 <AnchorPane prefHeight="400.0" prefWidth="602.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.bibliotecafx.interfaz.AutorControlador">
    <children>
 
-      <Button layoutX="91.0" layoutY="293.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="122.0" text="agregar autor" />
+       <TextField fx:id="idAutorField" layoutX="91.0" layoutY="50.0" promptText="ID del Autor" />
+       <TextField fx:id="nombreAutorField" layoutX="91.0" layoutY="100.0" promptText="Nombre del Autor" />
 
-      <Button layoutX="91.0" layoutY="344.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="122.0" text="modificar autor" />
+       <Button layoutX="91.0" layoutY="293.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="122.0" text="agregar autor" onAction="#accionAgregarAutor" />
 
-      <Button layoutX="240.0" layoutY="293.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="122.0" text="eliminar autor" />
+      <Button layoutX="91.0" layoutY="344.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="122.0" text="modificar autor" onAction="acccionModificarAutor"/>
 
-      <Button layoutX="240.0" layoutY="344.0" mnemonicParsing="false" text="autores por nombre" />
+      <Button layoutX="240.0" layoutY="293.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="122.0" text="eliminar autor" onAction="accionEliminarAutor"/>
 
-      <Button layoutX="390.0" layoutY="293.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="122.0" text="listar autores" />
+      <Button layoutX="240.0" layoutY="344.0" mnemonicParsing="false" text="autores por nombre" onAction="accionAutoresPorNombre"/>/>
 
-      <Button layoutX="390.0" layoutY="344.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="122.0" text="Volver" />
+      <Button layoutX="390.0" layoutY="293.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="122.0" text="listar autores" onAction="accionListarAutor"/>/>
+
+      <Button layoutX="390.0" layoutY="344.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="122.0" text="Volver" onAction="accionVolver"/>/>
 
       <Label layoutX="14.0" layoutY="14.0" prefHeight="208.0" prefWidth="575.0" style="-fx-background-color: 3c9ede;" textAlignment="CENTER" />
 

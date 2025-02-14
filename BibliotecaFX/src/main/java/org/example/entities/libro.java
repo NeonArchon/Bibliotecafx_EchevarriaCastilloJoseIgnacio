@@ -1,7 +1,6 @@
 package org.example.entities;
 
 import jakarta.persistence.*;
-import org.example.entities.autor;
 
 import java.io.Serializable;
 
@@ -39,7 +38,7 @@ public class libro implements Serializable {
     //constructoer relleno
 
 
-    public libro(Long ididLibro, String titulo, String isbn, String editorial, int anioPublicacion, org.example.entities.autor autor, boolean prestado) {
+    public libro(Long ididLibro, String titulo, String isbn, String editorial, int anioPublicacion, autor autor, boolean prestado) {
         this.idLibro = idLibro;
         this.titulo = titulo;
         this.isbn = isbn;
@@ -90,11 +89,11 @@ public class libro implements Serializable {
         this.anioPublicacion = anioPublicacion;
     }
 
-    public org.example.entities.autor getAutor() {
+    public autor getAutor() {
         return autor;
     }
 
-    public void setAutor(org.example.entities.autor autor) {
+    public void setAutor(String autor) {
         this.autor = autor;
     }
 
