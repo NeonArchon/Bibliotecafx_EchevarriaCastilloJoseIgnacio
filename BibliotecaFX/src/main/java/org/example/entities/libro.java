@@ -1,6 +1,7 @@
 package org.example.entities;
 
 import jakarta.persistence.*;
+import org.example.entities.autor;
 
 import java.io.Serializable;
 
@@ -93,7 +94,7 @@ public class libro implements Serializable {
         return autor;
     }
 
-    public void setAutor(String autor) {
+    public void setAutor(autor autor) {
         this.autor = autor;
     }
 
